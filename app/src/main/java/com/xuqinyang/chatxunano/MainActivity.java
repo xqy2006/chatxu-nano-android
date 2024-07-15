@@ -26,8 +26,8 @@ public class MainActivity extends Activity {
         webSettings.setAllowUniversalAccessFromFileURLs(true);
         webSettings.setAllowFileAccessFromFileURLs(true);
         mWebView.setWebViewClient(new MyWebViewClient());
-        mWebView.evaluateJavascript("javascript:navigator.clipboard.writeText = (msg) => { return Android.writeToClipboard(msg); }", null);
-        mWebView.addJavascriptInterface(new WebViewInterface(), "Android");
+        mWebView.evaluateJavascript("javascript:navigator.clipboard.writeText = (msg) => { return Android.copyToClipboard(msg); }", null);
+        mWebView.addJavascriptInterface(new WebViewInterface(this), "Android");
         // REMOTE RESOURCE
         //mWebView.loadUrl("https://story.xuqinyang.top");
 

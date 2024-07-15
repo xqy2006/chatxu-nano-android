@@ -7,11 +7,16 @@ import android.content.Context;
 import android.webkit.JavascriptInterface;
 
 public class WebViewInterface {
+    Context mContext;
+
+    WebViewInterface(Context c) {
+        mContext = c;
+    }
+
     @JavascriptInterface
-    public boolean writeToClipboard(String text) {
-        //ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-        //ClipData clip = ClipData.newPlainText("demo", text);
-        //clipboard.setPrimaryClip(clip);
-        return true;
+    public void copyToClipboard(String text) {
+        ClipboardManager clipboard = (ClipboardManager) mContext.getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("Copied Text", text);
+        clipboard.setPrimaryClip(clip);
     }
 }
